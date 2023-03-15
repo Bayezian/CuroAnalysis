@@ -7,13 +7,15 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load data
-repaironDemand = pd.read_csv("../data/Repairs_Demand_Orders.csv", low_memory = False)
+repaironDemand = pd.read_csv("../data/Repairs_Demand_Orders.csv", low_memory=False)
+
 
 def perc(x: pd.Series, y: pd.Series) -> float:
     """
     Calculates percentage of unique property ids are found in joined repair data.
     """
     return (x.nunique() / len(y)) * 100
+
 
 # Calculate percentage repairs
 percRepairs = perc(repaironDemand["prty_id"], df["prty_id"])

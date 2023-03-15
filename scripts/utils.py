@@ -24,8 +24,5 @@ def filter_DLO_data(dataframe: pd.DataFrame) -> pd.DataFrame:
 
     return dataframe
 
+
 dlo_data = filter_DLO_data(properties)
-
-
-
-

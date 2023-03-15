@@ -4,18 +4,23 @@ Repair types per year
 
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
 
-repaironDemand = pd.read_csv("../data/Repairs_Demand_Orders.csv", low_memory = False)
+repaironDemand = pd.read_csv("../data/Repairs_Demand_Orders.csv", low_memory=False)
 
 # Remove white space from Contractor reference column
-repaironDemand["ContractorReference"] = repaironDemand["ContractorReference"].str.strip()
+repaironDemand["ContractorReference"] = repaironDemand[
+    "ContractorReference"
+].str.strip()
 
 # Get only Curo repair codes
-repaironDemand = repaironDemand[repaironDemand["ContractorReference"].isin(["000500", "007809", "007865"])]
+repaironDemand = repaironDemand[
+    repaironDemand["ContractorReference"].isin(["000500", "007809", "007865"])
+]
 
 # Groupby statement to get counts per fiscal year
-df = repaironDemand.groupby(["FiscalYearLoggedDate"], as_index=False)["TradeDesn"].value_counts()
+df = repaironDemand.groupby(["FiscalYearLoggedDate"], as_index=False)[
+    "TradeDesn"
+].value_counts()
 
 # Remove white space from cols and column
 df.columns = df.columns.str.strip()
@@ -27,8 +32,8 @@ electrical = df[df["TradeDesn"] == "Electrical"]
 plumbing = df[df["TradeDesn"] == "Plumbing"]
 
 # Merge them together into single dataframe
-x = carpentry.merge(electrical, on = "FiscalYearLoggedDate")
-y = x.merge(plumbing, on = "FiscalYearLoggedDate")
+x = carpentry.merge(electrical, on="FiscalYearLoggedDate")
+y = x.merge(plumbing, on="FiscalYearLoggedDate")
 
 # Calculate percentage changes by year
 # y["count_x"] = y["count_x"].pct_change()

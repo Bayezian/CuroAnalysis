@@ -1,23 +1,37 @@
-'''
+"""
 Scripts for time to resolution calculations
-'''
+"""
 
 import pandas as pd
 import matplotlib.pyplot as plt
 
 # Import data
-repaironDemand = pd.read_csv("../data/Repairs_Demand_Orders.csv", low_memory = False)
+repaironDemand = pd.read_csv("../data/Repairs_Demand_Orders.csv", low_memory=False)
 
 # Fill NA values that mess with later analysis
 repaironDemand = repaironDemand.fillna(0)
 
 # Cast fiscal year completed data as integers
-repaironDemand["FiscalYearCompletedDate"] = repaironDemand["FiscalYearCompletedDate"].astype(int)
-repaironDemand["MonthNumberCompletedDate"] = repaironDemand["MonthNumberCompletedDate"].astype(int)
+repaironDemand["FiscalYearCompletedDate"] = repaironDemand[
+    "FiscalYearCompletedDate"
+].astype(int)
+repaironDemand["MonthNumberCompletedDate"] = repaironDemand[
+    "MonthNumberCompletedDate"
+].astype(int)
 
 #  Create DMY feature
-t = ("01-" + repaironDemand["MonthNumberLoggedDate"].astype(str) + "-" + repaironDemand["FiscalYearLoggedDate"].astype(str))
-v = ("01-" + repaironDemand["MonthNumberCompletedDate"].astype(str) + "-" + repaironDemand["FiscalYearCompletedDate"].astype(str))
+t = (
+    "01-"
+    + repaironDemand["MonthNumberLoggedDate"].astype(str)
+    + "-"
+    + repaironDemand["FiscalYearLoggedDate"].astype(str)
+)
+v = (
+    "01-"
+    + repaironDemand["MonthNumberCompletedDate"].astype(str)
+    + "-"
+    + repaironDemand["FiscalYearCompletedDate"].astype(str)
+)
 
 # Replace all 0s with an arbitrary date
 v = v.replace({"0-0": "01-1850"}, regex=True)

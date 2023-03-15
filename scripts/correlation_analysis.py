@@ -4,8 +4,6 @@ File containing code for pearson correlation coefficient analysis
 
 import pandas as pd
 from utils import dlo_data as df
-import matplotlib.pyplot as plt
-import numpy as np
 
 # Load data
 repairs = pd.read_csv("../data/Repairs_Demand_Orders.csv", low_memory=False)

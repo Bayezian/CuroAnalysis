@@ -7,7 +7,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load data in
-df = pd.read_csv("../data/Repairs_Demand_Orders.csv", low_memory = False)
+df = pd.read_csv("../data/Repairs_Demand_Orders.csv", low_memory=False)
+
 
 def renderSubplots(data: pd.DataFrame, labelOne: str, labelTwo: str) -> None:
     """

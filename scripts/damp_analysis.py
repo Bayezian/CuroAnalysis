@@ -1,6 +1,5 @@
 import pandas as pd
 from utils import dlo_data as df
-import matplotlib.pyplot as plt
 
 # Import data
 repairs = pd.read_csv("../data/Repairs_Demand_Orders.csv", low_memory=False)

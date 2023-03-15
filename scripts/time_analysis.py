@@ -7,7 +7,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load data
-repaironDemand = pd.read_csv("../data/Repairs_Demand_Orders.csv", low_memory = False)
+repaironDemand = pd.read_csv("../data/Repairs_Demand_Orders.csv", low_memory=False)
 
 # Remove white space
 repaironDemand["ContractorReference"] = repaironDemand[
@@ -54,6 +54,7 @@ def plotStack(data: pd.DataFrame, title: str) -> None:
     )
     plt.tight_layout()
     plt.show()
+
 
 # Call functions
 # plotStack(rod, "Curo logged repairs by Year by Quarter (fiscal)")
